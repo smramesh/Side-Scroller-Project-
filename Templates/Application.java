@@ -31,6 +31,10 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     
     }
     
+    
+    //*************************ACTION LISTENER METHOD***********//
+    //*********************************************************//
+    //This is where the speed and direction of movements is tracked.
     public void actionPerformed( ActionEvent ae ) {
     	if(x<10){
     		velX = 0; 
@@ -54,7 +58,20 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     y -= velY;   
     repaint();
     }
-
+//************************************************************//
+//************************************************************//
+    
+    
+    
+    
+    
+    
+    
+    //************************************************//
+    //****************KEY LISTENER METHODS************//
+    //************************************************//
+    
+    //This is where the character moves based on keyboard commands.
     public void keyPressed(KeyEvent kP){
     	int c = kP.getKeyCode();
     	
@@ -75,15 +92,22 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent kR){
     	velX = 0;  
     	velY = -1; 
-
-    	 
     }
-    
     public void keyTyped(KeyEvent kT){
     	
     }
-    public void paint(Graphics g) {
-        
+    
+    //***************************************//
+    
+    
+    
+    
+    
+       
+    //***********PAINT METHOD**************//
+    //*************************************//    
+    //This method is where the character gets painted. 
+    public void paint(Graphics g) {        
     	
         myEllipse = new Ellipse2D.Double( x, y, 20, 30 );       
         backgroundRectangle = new Rectangle2D.Double( 0, 0, 400, 300 );
@@ -92,10 +116,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	g2.fill( backgroundRectangle );
     	g2.setColor(Color.gray);
     	g2.fill(myEllipse);
-
-
-
-
 }
+    
+    //************************************//
+    //***********************************//
 }
 
