@@ -13,7 +13,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     int x = 10, velX = 0;
     int y = 230, velY = 0; 
     int displayCounter = 0; 
-    Image graveyardBackground, transitionaryBackground; 
+    Image graveyardBackground, transitionaryBackground, townBackground; 
     
     
     public Application() {
@@ -24,7 +24,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     setFocusTraversalKeysEnabled(false); 
     graveyardBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/graveyardbackground.png")).getImage();
     transitionaryBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/transitionarybackground.png")).getImage();
-
+    townBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/townBackground.png")).getImage();
     
     
     
@@ -140,6 +140,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	g2.fill( backgroundRectangle );
     	if(displayCounter==0){
     	g2.drawImage(graveyardBackground, 0, 0, null); 
+    	}
+    	else if(displayCounter==2){
+    		g2.drawImage(townBackground, 0, 0, null); 
     	}
     	else{
     	g2.drawImage(transitionaryBackground, 0, 0, null); 
