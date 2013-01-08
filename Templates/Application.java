@@ -5,7 +5,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Application extends JFrame implements ActionListener, KeyListener{
-    Ellipse2D.Double myEllipse;
+	
+    Ellipse2D.Double myEllipse, townsPeopleEllipse;
     Rectangle2D.Double backgroundRectangle;  
     Timer tm = new Timer(5, this); 
     int x = 10, velX = 0;
@@ -110,7 +111,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
 
     
     public void paint(Graphics g) {        
-
+    	townsPeopleEllipse = new Ellipse2D.Double(70, 230, 20, 30);    	
         myEllipse = new Ellipse2D.Double( x, y, 20, 30 );       
         backgroundRectangle = new Rectangle2D.Double( 0, 0, 400, 300 );
     	Graphics2D g2 = (Graphics2D)g;
@@ -118,6 +119,8 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	g2.fill( backgroundRectangle );
     	g2.setColor(Color.gray);
     	g2.fill(myEllipse);
+    	g2.setColor(Color.RED); 
+    	g2.fill(townsPeopleEllipse); 
 }
     
     //************************************//
