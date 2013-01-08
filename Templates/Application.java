@@ -3,30 +3,37 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Scanner; 
 
 public class Application extends JFrame implements ActionListener, KeyListener{
-	
+	JLabel dialogue; JPanel gamePanel; 
     Ellipse2D.Double myEllipse, townsPeopleEllipse;
     Rectangle2D.Double backgroundRectangle;  
     Timer tm = new Timer(5, this); 
     int x = 10, velX = 0;
     int y = 230, velY = 0; 
+    int displayCounter = 0; 
     
     
     
     public Application() {
-
+       
     tm.start(); 
     addKeyListener(this); 
     setFocusable(true); 
     setFocusTraversalKeysEnabled(false); 
+    
+
+    
+    
+    
     }
     
     public static void main(String[] args ) {
     Application b = new Application();
 
     b.setSize( 400, 300 );
-    b.setVisible(true);
+   	b.setVisible(true);  
     b.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     
     
@@ -37,13 +44,29 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     //*********************************************************//
     //This is where the speed and direction of movements is tracked.
     public void actionPerformed( ActionEvent ae ) {
-    	if(x<10){
+    	if(x<10&&displayCounter!=0){
+    		velX = 0; 
+    		x = 370; 
+    		displayCounter--; 
+    		
+    		//TEST
+    		System.out.println(displayCounter); 
+    	}
+    	if(x<10&&displayCounter==0){
     		velX = 0; 
     		x = 10; 
+    		displayCounter = 0; 
+    		
+    		//TEST
+    		System.out.println(displayCounter); 
     	}
     	if(x>370){
     		velX = 0; 
-    		x = 370; 
+    		x = 10; 
+    		displayCounter++; 
+    		
+    		//TEST
+    		System.out.println(displayCounter);
     	}
     x += velX; 
     
@@ -119,8 +142,11 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	g2.fill( backgroundRectangle );
     	g2.setColor(Color.gray);
     	g2.fill(myEllipse);
-    	g2.setColor(Color.RED); 
-    	g2.fill(townsPeopleEllipse); 
+    	
+    	if(displayCounter==2){
+    		g2.setColor(Color.RED); 
+    		g2.fill(townsPeopleEllipse); 
+    	}
 }
     
     //************************************//
