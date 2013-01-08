@@ -13,7 +13,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     int x = 10, velX = 0;
     int y = 230, velY = 0; 
     int displayCounter = 0; 
-    Image graveyardBackground, transitionaryBackground, townBackground; 
+    Image graveyardBackground, transitionaryBackground, townBackground, town1; 
     
     
     public Application() {
@@ -25,7 +25,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     graveyardBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/graveyardbackground.png")).getImage();
     transitionaryBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/transitionarybackground.png")).getImage();
     townBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/townBackground.png")).getImage();
-    
+    town1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/town1area.png")).getImage();
     
     
     }
@@ -73,9 +73,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     		y = 230; 
     	}
     	
-    	if(y<150){
+    	if(y<90){
     		velY = 0; 
-    		y = 150; 
+    		y = 90; 
     	}
     y -= velY;   
     repaint();
@@ -143,6 +143,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	}
     	else if(displayCounter==2){
     		g2.drawImage(townBackground, 0, 0, null); 
+    	}
+    	else if(displayCounter==3){
+    		g2.drawImage(town1, 0, 0, null); 
     	}
     	else{
     	g2.drawImage(transitionaryBackground, 0, 0, null); 
