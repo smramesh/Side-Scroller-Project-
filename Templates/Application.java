@@ -75,15 +75,15 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent kP){
     	int c = kP.getKeyCode();
     	
-    	if(c == KeyEvent.VK_LEFT){
+    	if(c == KeyEvent.VK_A){
     		velX = -1;
     	}
     	
-    	if(c == KeyEvent.VK_RIGHT){
+    	if(c == KeyEvent.VK_D){
     		velX = 1;
     	}
     	
-    	if(c == KeyEvent.VK_UP){
+    	if(c == KeyEvent.VK_SPACE){
     		velY = 2;        				
     	}
  
