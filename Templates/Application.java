@@ -69,8 +69,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     
     //************************************************//
     //****************KEY LISTENER METHODS************//
-    //************************************************//
-    
+    //************************************************///
     //This is where the character moves based on keyboard commands.
     public void keyPressed(KeyEvent kP){
     	int c = kP.getKeyCode();
