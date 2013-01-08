@@ -13,7 +13,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     int x = 10, velX = 0;
     int y = 230, velY = 0; 
     int displayCounter = 0; 
-    
+    Image graveyardBackground; 
     
     
     public Application() {
@@ -22,7 +22,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     addKeyListener(this); 
     setFocusable(true); 
     setFocusTraversalKeysEnabled(false); 
-    
+    graveyardBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/graveyardbackground.png")).getImage();
 
     
     
@@ -49,24 +49,21 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     		x = 370; 
     		displayCounter--; 
     		
-    		//TEST
-    		System.out.println(displayCounter); 
+    		
     	}
     	if(x<10&&displayCounter==0){
     		velX = 0; 
     		x = 10; 
     		displayCounter = 0; 
     		
-    		//TEST
-    		System.out.println(displayCounter); 
+    		
     	}
     	if(x>370){
     		velX = 0; 
     		x = 10; 
     		displayCounter++; 
     		
-    		//TEST
-    		System.out.println(displayCounter);
+    		
     	}
     x += velX; 
     
@@ -140,6 +137,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	Graphics2D g2 = (Graphics2D)g;
     	g2.setColor( Color.BLACK );
     	g2.fill( backgroundRectangle );
+    	if(displayCounter==0){
+    	g2.drawImage(graveyardBackground, 0, 0, null); 
+    	}
     	g2.setColor(Color.gray);
     	g2.fill(myEllipse);
     	
