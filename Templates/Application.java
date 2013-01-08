@@ -141,7 +141,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	if(displayCounter==0){
     	g2.drawImage(graveyardBackground, 0, 0, null); 
     	}
-    	if(displayCounter==1){
+    	else{
     	g2.drawImage(transitionaryBackground, 0, 0, null); 
     	}
     	g2.setColor(Color.gray);
