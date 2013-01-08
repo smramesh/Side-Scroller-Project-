@@ -84,7 +84,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	}
     	
     	if(c == KeyEvent.VK_UP){
-    		velY = 1;        				
+    		velY = 2;        				
     	}
  
     }
@@ -107,8 +107,11 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     //***********PAINT METHOD**************//
     //*************************************//    
     //This method is where the character gets painted. 
+    
+
+    
     public void paint(Graphics g) {        
-    	
+
         myEllipse = new Ellipse2D.Double( x, y, 20, 30 );       
         backgroundRectangle = new Rectangle2D.Double( 0, 0, 400, 300 );
     	Graphics2D g2 = (Graphics2D)g;
