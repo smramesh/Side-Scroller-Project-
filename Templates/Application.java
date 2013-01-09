@@ -17,6 +17,8 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     int y = 230, velY = 0; 
     int displayCounter = 0; 
     Image graveyardBackground, transitionaryBackground, townBackground, town1; 
+    Image dbImage; 
+    Graphics dbg; 
 
     
     
@@ -125,16 +127,10 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     
     //***************************************//
     
-    
-    
-    
-    
-       
-    //***********PAINT METHOD**************//
-    //*************************************//    
-    //This method is where the character gets painted. 
-    
-    //GETTING MUSIC TO RUN IN GAME
+    //****************MUSIC METHOD**********//
+    //**************************************//
+    //***************************************//
+    //This method is where the music gets implemented. 
     public void music(){
     	AudioPlayer musicPlayer = AudioPlayer.player;
     	AudioStream backgroundMusic;
@@ -153,7 +149,27 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     	 
     }
     
-    public void paint(Graphics g) {        
+    //*****************************************//
+    //*****************************************//
+    
+    
+    
+       
+    //***********PAINT METHOD**************//
+    //*************************************//    
+    //This method is where the character gets painted. 
+        
+    
+    public void paint(Graphics g){
+    	
+    	dbImage = createImage(getWidth(), getHeight());
+    	dbg = dbImage.getGraphics(); 
+    	paintComponent(dbg);
+    	g.drawImage(dbImage, 0, 0, this);
+    }
+    
+    
+    public void paintComponent(Graphics g) {        
     	townsPeopleEllipse = new Ellipse2D.Double(70, 230, 20, 30);    	
         myEllipse = new Ellipse2D.Double( x, y, 20, 30 );       
         backgroundRectangle = new Rectangle2D.Double( 0, 0, 400, 300 );
@@ -179,7 +195,9 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     		g2.setColor(Color.RED); 
     		g2.fill(townsPeopleEllipse); 
     	}
-}
+    	
+    	repaint(); 
+    }
     
     //************************************//
     //***********************************//
