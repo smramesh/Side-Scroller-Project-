@@ -26,10 +26,10 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     addKeyListener(this); 
     setFocusable(true); 
     setFocusTraversalKeysEnabled(false); 
-    graveyardBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/graveyardbackground.png")).getImage();
-    transitionaryBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/transitionarybackground.png")).getImage();
-    townBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/townBackground.png")).getImage();
-    town1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/town1area.png")).getImage();
+    graveyardBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/pictures/graveyardbackground.png")).getImage();
+    transitionaryBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/pictures/transitionarybackground.png")).getImage();
+    townBackground = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/pictures/townBackground.png")).getImage();
+    town1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage("src/pictures/town1area.png")).getImage();
     
     
     }
@@ -136,20 +136,21 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     
     //GETTING MUSIC TO RUN IN GAME
     public void music(){
-    	AudioPlayer aP = AudioPlayer.player;
-    	AudioStream aS;
-    	AudioData aD;
-    	ContinuousAudioDataStream cads = null; 
+    	AudioPlayer musicPlayer = AudioPlayer.player;
+    	AudioStream backgroundMusic;
+    	AudioData musicData;
+    	ContinuousAudioDataStream loop = null; 
     	
-    	try{ 
-    		aS = new AudioStream(new FileInputStream("")); //figure out the file path - the right path needs to be written in the quotes
-    		aD = aS.getData(); 
-    		cads = new ContinuousAudioDataStream(aD); 
+    	try{     	
+    		InputStream test = new FileInputStream("src/music/piano.wav"); 
+    		backgroundMusic = new AudioStream(test); 
+    		AudioPlayer.player.start(backgroundMusic);    		
     	}
     	catch(IOException error){
-    		System.out.println("Could not find file"); 
+    		 System.out.println(error);
     	}
-    	aP.start(cads); 
+    	musicPlayer.start(loop);
+    	 
     }
     
     public void paint(Graphics g) {        
