@@ -4,8 +4,11 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Scanner; 
+import sun.audio.*; 
+import java.io.*; 
 
 public class Application extends JFrame implements ActionListener, KeyListener{
+	
 	JLabel dialogue; JPanel gamePanel; 
     Ellipse2D.Double myEllipse, townsPeopleEllipse;
     Rectangle2D.Double backgroundRectangle;  
@@ -14,10 +17,11 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     int y = 230, velY = 0; 
     int displayCounter = 0; 
     Image graveyardBackground, transitionaryBackground, townBackground, town1; 
+
     
     
     public Application() {
-       
+    music();  
     tm.start(); 
     addKeyListener(this); 
     setFocusable(true); 
@@ -78,6 +82,7 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     		y = 90; 
     	}
     y -= velY;   
+    
     repaint();
     }
 //************************************************************//
@@ -129,7 +134,23 @@ public class Application extends JFrame implements ActionListener, KeyListener{
     //*************************************//    
     //This method is where the character gets painted. 
     
-
+    //GETTING MUSIC TO RUN IN GAME
+    public void music(){
+    	AudioPlayer aP = AudioPlayer.player;
+    	AudioStream aS;
+    	AudioData aD;
+    	ContinuousAudioDataStream cads = null; 
+    	
+    	try{ 
+    		aS = new AudioStream(new FileInputStream("")); //figure out the file path - the right path needs to be written in the quotes
+    		aD = aS.getData(); 
+    		cads = new ContinuousAudioDataStream(aD); 
+    	}
+    	catch(IOException error){
+    		System.out.println("Could not find file"); 
+    	}
+    	aP.start(cads); 
+    }
     
     public void paint(Graphics g) {        
     	townsPeopleEllipse = new Ellipse2D.Double(70, 230, 20, 30);    	
