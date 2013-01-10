@@ -1,16 +1,25 @@
 import java.awt.*;
 import java.util.*;
+import javax.swing.*;
 
 public class TPArrayList {
-	ArrayList<String> TPArray = new ArrayList<String>();
+	ArrayList<ImageIcon> TPArray;
 	
-	public TPArrayList(int x)
+	public TPArrayList()
 	{
-		TPArray.add("Rake TP");
-		TPArray.add("Pistol TP");
-		TPArray.add("unarmed TP");
-		TPArray.add("Sword TP");
-		System.out.println(TPArray.get(x));
+		TPArray = new ArrayList<ImageIcon>();
+		TPArray.add(new ImageIcon("src/Shovel.png"));
+		TPArray.add(new ImageIcon("src/Pistol.png"));
+		TPArray.add(new ImageIcon("src/Unarmed.png"));
+		TPArray.add(new ImageIcon("src/Swordsman.png"));
+	}
+
+	public ImageIcon getTPArray(int x) {
+		return TPArray.get(x);
+	}
+
+	public void setTPArray(ArrayList<ImageIcon> tPArray) {
+		TPArray = tPArray;
 	}
 
 }
